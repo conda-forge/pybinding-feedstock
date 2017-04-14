@@ -1,19 +1,18 @@
 {% set name = "pybinding" %}
-{% set version = "0.8.2" %}
-{% set sha256 = "cda0d8a3c3abb7cf2e8c2be337ece320a0d9002eded5444ae7763ad1a9e0ccec" %}
+{% set version = "0.9.0" %}
+{% set sha256 = "1655c0e8ad7f653a32aa0fa3daa90330c2a55c2b3b7a6dbc8525336fc9c68a02" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  git_url: https://github.com/dean0x7d/pybinding.git
-  git_rev: v{{ version }}
-  patches:
-    - 0001-Workaround-for-conda-build-glob-pattern-expansion.patch
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
 
 build:
-  skip: True  # [py<34]
+  skip: True  # [py<35]
   number: 0
 
 requirements:
@@ -22,13 +21,12 @@ requirements:
     - setuptools
     - toolchain
     - cmake
-    - numpy x.x
   run:
     - python
-    - numpy x.x
-    - scipy
-    - matplotlib
-    - pytest
+    - numpy >=1.12
+    - scipy >=0.19
+    - matplotlib >=2.0
+    - pytest >=3.0
 
 test:
   imports:
