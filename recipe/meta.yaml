@@ -1,6 +1,6 @@
 {% set name = "pybinding" %}
-{% set version = "0.9.0" %}
-{% set sha256 = "1655c0e8ad7f653a32aa0fa3daa90330c2a55c2b3b7a6dbc8525336fc9c68a02" %}
+{% set version = "0.9.1" %}
+{% set sha256 = "b99e77210f8e3d29dea3e610aa045c406cc0f851839ef1c1e11d205b1f8e7f6b" %}
 
 package:
   name: {{ name|lower }}
