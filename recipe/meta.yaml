@@ -17,13 +17,15 @@ build:
 
 requirements:
   build:
+    - cmake
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - python
     - setuptools
-    - toolchain
-    - cmake
   run:
     - python
-    - numpy >=1.12
+    - numpy
     - scipy >=0.19
     - matplotlib >=2.0
     - pytest >=3.0
