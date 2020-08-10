@@ -13,13 +13,13 @@ source:
 
 build:
   skip: True  # [py<35]
-  number: 0
+  number: 1000
 
 requirements:
   build:
     - python
-    - setuptools
-    - toolchain
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
     - cmake
   run:
     - python
