@@ -1,6 +1,6 @@
 {% set name = "pybinding" %}
-{% set version = "0.9.4" %}
-{% set sha256 = "945c0b4739f87f5c94736fe83fa3abfad6d9cff8a89de37f1916c03968def5b4" %}
+{% set version = "0.9.5" %}
+{% set sha256 = "a3b0fd5c7bc6babdd265797698573a2ffe31edc5c4c6c4265262aa6f1005603d" %}
 
 package:
   name: {{ name|lower }}
@@ -12,21 +12,22 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  skip: True  # [py<35]
+  skip: True  # [py<36]
   number: 0
 
 requirements:
   build:
-    - python
-    - setuptools
-    - toolchain
+    - {{ compiler('cxx') }}
     - cmake
+  host:
+    - python
+    - pip
   run:
     - python
     - numpy >=1.12
     - scipy >=0.19
-    - matplotlib >=2.0
-    - pytest >=3.0
+    - matplotlib-base >=2.0
+    - pytest >=5.0
 
 test:
   imports:
@@ -34,7 +35,7 @@ test:
 
 about:
   home: http://pybinding.site/
-  license: BSD 2-Clause
+  license: BSD-2-Clause
   license_family: BSD
   license_file: license.md
   summary: 'Package for numerical tight-binding calculations in solid state physics'
